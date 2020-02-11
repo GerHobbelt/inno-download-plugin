@@ -1,12 +1,17 @@
-syntax: glob
-localstuff
+.vs/
+Debug/
+Debug ANSI/
+Release/
+Release ANSI/
 *.suo
 *.ncb
 *.user
 *.obj
+*.iobj
 *.res
 *.idb
 *.pdb
+*.ipdb
 *.dll
 *.exe
 *.exp

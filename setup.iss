@@ -13,7 +13,7 @@ AppCopyright         = (C)2013-{#ProgYear} Mitrich Software
 AppPublisher         = Mitrich Software
 AppPublisherURL      = {#WebSite}
 AppSupportURL        = {#Forum}
-DefaultDirName       = {pf}\{#ProgName}
+DefaultDirName       = {commonpf}\{#ProgName}
 DefaultGroupName     = {#ProgName}
 AllowNoIcons         = yes
 SolidCompression     = yes
@@ -52,7 +52,7 @@ Source: "ansi\idplang\*.iss";           DestDir: "{app}\source\ansi\idplang";   
 Source: "setup.iss";                    DestDir: "{app}\source";                 Components: src
 Source: "InnoDownloadPlugin.sln";       DestDir: "{app}\source";                 Components: src
 Source: "InnoDownloadPlugin.workspace"; DestDir: "{app}\source";                 Components: src
-Source: "idp\idp.vcproj";               DestDir: "{app}\source\idp";             Components: src
+Source: "idp\idp.vcxproj";              DestDir: "{app}\source\idp";             Components: src
 Source: "idp\idp.cbp";                  DestDir: "{app}\source\idp";             Components: src
 Source: "idp\*.cpp";                    DestDir: "{app}\source\idp";             Components: src
 Source: "idp\*.h";                      DestDir: "{app}\source\idp";             Components: src
@@ -71,13 +71,13 @@ Source: "misc\*.bat";                   DestDir: "{app}\source\misc";           
 Source: "COPYING.txt";                  DestDir: "{app}\source";                 Components: src
 Source: "README.md";                    DestDir: "{app}\source";                 Components: src
 
-Source: "tests\*.iss";                        DestDir: "{app}\source\tests";            Components: src
-Source: "tests\statictest\statictest.vcproj"; DestDir: "{app}\source\tests\statictest"; Components: src
-Source: "tests\statictest\main.cpp";          DestDir: "{app}\source\tests\statictest"; Components: src
-Source: "tests\dlltest\dlltest.vcproj";       DestDir: "{app}\source\tests\dlltest";    Components: src
-Source: "tests\dlltest\main.cpp";             DestDir: "{app}\source\tests\dlltest";    Components: src
-Source: "tests\ftpdirtest\ftpdirtest.vcproj"; DestDir: "{app}\source\tests\ftpdirtest"; Components: src
-Source: "tests\ftpdirtest\main.cpp";          DestDir: "{app}\source\tests\ftpdirtest"; Components: src
+Source: "tests\*.iss";                         DestDir: "{app}\source\tests";            Components: src
+Source: "tests\statictest\statictest.vcxproj"; DestDir: "{app}\source\tests\statictest"; Components: src
+Source: "tests\statictest\main.cpp";           DestDir: "{app}\source\tests\statictest"; Components: src
+Source: "tests\dlltest\dlltest.vcxproj";       DestDir: "{app}\source\tests\dlltest";    Components: src
+Source: "tests\dlltest\main.cpp";              DestDir: "{app}\source\tests\dlltest";    Components: src
+Source: "tests\ftpdirtest\ftpdirtest.vcxproj"; DestDir: "{app}\source\tests\ftpdirtest"; Components: src
+Source: "tests\ftpdirtest\main.cpp";           DestDir: "{app}\source\tests\ftpdirtest"; Components: src
 
 [Icons]
 Name: "{group}\{#ProgName} {cm:Documentation}";    Filename: "{app}\idp.chm"
@@ -102,7 +102,7 @@ const idpPathStr = '#pragma include __INCLUDE__ + ";" + ReadReg(HKLM, "Software\
 function GetISPPBuiltinsLocation: String;
 var dir: String;
 begin
-    if RegQueryStringValue(HKEY_LOCAL_MACHINE, 'Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 5_is1', 'InstallLocation', dir) then
+    if RegQueryStringValue(HKEY_LOCAL_MACHINE, 'Software\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 6_is1', 'InstallLocation', dir) then
     begin
         if FileExists(dir + 'ISPPBuiltins.iss') then
             result := dir + 'ISPPBuiltins.iss'
@@ -131,7 +131,7 @@ end;
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
     if CurStep = ssPostInstall then
-        if IsTaskSelected('includepath') then
+        if WizardIsTaskSelected('includepath') then
             if FileExists(GetISPPBuiltinsLocation) then
                 if not IncludePathAlreadyAdded then
                     SaveStringToFile(GetISPPBuiltinsLocation, #13#10 + '; Inno Download Plugin include path' + #13#10 + idpPathStr + #13#10, true);
