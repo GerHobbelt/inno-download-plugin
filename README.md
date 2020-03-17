@@ -1,8 +1,9 @@
-# IDP: Download plugin for Inno Setup #
+# [IDP](https://mitrichsoftware.wordpress.com/inno-setup-tools/inno-download-plugin): Download plugin for Inno Setup #
 
-Inno Download Plugin is a plugin for [Inno Setup](http://www.jrsoftware.org/isinfo.php), which allows you to download files as part of your installation.
+[Inno Download Plugin](https://mitrichsoftware.wordpress.com/inno-setup-tools/inno-download-plugin) is a plugin for [Inno Setup](http://www.jrsoftware.org/isinfo.php), which allows you to download files as part of your installation.
 
 ### Features: ###
+
 * Supports **Unicode** & **ANSI** Inno Setup versions
 * **FTP**, **HTTP** and **HTTPS** protocols
 * Configurable proxy settings
@@ -10,18 +11,20 @@ Inno Download Plugin is a plugin for [Inno Setup](http://www.jrsoftware.org/isin
 * Free and open source under [Zlib license](http://opensource.org/licenses/Zlib)
 
 ### Supported languages: ###
-  * Belarusian
-  * Brazilian Portuguese
-  * English
-  * Finnish
-  * French
-  * German
-  * Italian
-  * Polish
-  * Russian
-  * Simplified Chinese
+
+* Belarusian
+* Brazilian Portuguese
+* English
+* Finnish
+* French
+* German
+* Italian
+* Polish
+* Russian
+* Simplified Chinese
 
 ### Basic example: ###
+
 ```
 #include <idp.iss>
 
@@ -43,22 +46,21 @@ begin
     idpDownloadAfter(wpReady);
 end;
 ```
-[More examples...](https://code.google.com/p/inno-download-plugin/source/browse/examples)
+
+[More examples...](./tree/master/examples)
 
 ### Download: ###
-Latest version is 1.5.0 (14 Jan 2015)
-  * [Download version 1.5.0 (Yandex Disk)](https://yadi.sk/d/B1GXlnwXdxggz)
-  * [Download other releases (Yandex Disk)](https://yadi.sk/d/y1tTqndxVf7Uh)
-  * [Download other releases (Google Drive)](https://drive.google.com/folderview?id=0Bzw1xBVt0mokSXZrUEFIanV4azA&usp=sharing#list)
 
-### Discussions & support: ###
-  * [Inno Download Plugin on Google Groups](https://groups.google.com/forum/#!forum/inno-download-plugin)
+Latest version is 1.5.1 (14 Jan 2015)
 
+* [Download version 1.5.0 (Yandex Disk)](https://yadi.sk/d/B1GXlnwXdxggz)
+* [Download other releases (Yandex Disk)](https://yadi.sk/d/y1tTqndxVf7Uh)
+* [Download other releases (Google Drive)](https://drive.google.com/folderview?id=0Bzw1xBVt0mokSXZrUEFIanV4azA&usp=sharing#list)
 
 ### Links: ###
 
 * [Homepage](https://mitrichsoftware.wordpress.com/inno-setup-tools/inno-download-plugin)
-* [Discussions](https://groups.google.com/forum/#!forum/inno-download-plugin)
+* [Discussions & support: Inno Download Plugin on Google Groups](https://groups.google.com/forum/#!forum/inno-download-plugin)
 
 ### Building from source ###
 
