@@ -30,7 +30,7 @@ int _tmain(int argc, _TCHAR* argv[])
     _tprintf(_T("Download %s\n"), result ? _T("OK") : _T("FAILED"));
     if(!result)
         _tprintf(_T("Error code: %u, error description: %s\n"), downloader.getLastError(), downloader.getLastErrorStr().c_str());
-    _gettch();
+    (void)_gettch();
     
     return 0;
 }
