@@ -1,8 +1,8 @@
+#include "ui.h"
 #include <string.h>
 #include "tstring.h"
 #include "trace.h"
 #include "url.h"
-#include "ui.h"
 
 Url::Url(tstring address)
 {
@@ -247,15 +247,16 @@ retry:
         }
 
         //Manual redirect
-        if((dwStatusCode == HTTP_STATUS_MOVED          ) ||
-           (dwStatusCode == HTTP_STATUS_REDIRECT       ) ||
-           (dwStatusCode == HTTP_STATUS_REDIRECT_METHOD))
+        if ((dwStatusCode == HTTP_STATUS_MOVED) ||
+            (dwStatusCode == HTTP_STATUS_REDIRECT) ||
+            (dwStatusCode == HTTP_STATUS_REDIRECT_METHOD))
         {
-            _TCHAR redirurl[4096];
+            _TCHAR redirurl[4096] = {0};
             dwBufSize = sizeof(redirurl);
 
             if(HttpQueryInfo(filehandle, HTTP_QUERY_LOCATION, &redirurl, &dwBufSize, &dwIndex))
             {
+                redirurl[4095] = 0;   // fix Warning C6054: String 'redirurl' might not be zero-terminated.
                 TRACE(_T("Redirecting to %s"), redirurl);
                 crack(redirurl);
                 close();

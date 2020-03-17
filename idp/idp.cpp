@@ -1,3 +1,4 @@
+#include "ui.h"
 #include "idp.h"
 #include "trace.h"
 

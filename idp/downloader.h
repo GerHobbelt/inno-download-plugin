@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ui.h"
 #include <windows.h>
 #include <wininet.h>
 #include <map>
@@ -8,7 +9,6 @@
 #include "tstring.h"
 #include "netfile.h"
 #include "timer.h"
-#include "ui.h"
 #include "internetoptions.h"
 #include "ftpdir.h"
 

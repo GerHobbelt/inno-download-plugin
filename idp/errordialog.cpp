@@ -1,7 +1,7 @@
+#include "ui.h"
 #include "errordialog.h"
 #include "trace.h"
 #include "resource.h"
-#include "ui.h"
 
 static ErrorDialog *errDlgPtr = NULL;
 
