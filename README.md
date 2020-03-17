@@ -47,11 +47,11 @@ begin
 end;
 ```
 
-[More examples...](./tree/master/examples)
+[More examples...](../../tree/master/examples)
 
 ### Download: ###
 
-Latest version is 1.5.1 (14 Jan 2015)
+Latest version is 1.5.1 (17 Apr 2016) is available via [Google Drive](https://drive.google.com/folderview?id=0Bzw1xBVt0mokSXZrUEFIanV4azA&usp=sharing#list).
 
 * [Download version 1.5.0 (Yandex Disk)](https://yadi.sk/d/B1GXlnwXdxggz)
 * [Download other releases (Yandex Disk)](https://yadi.sk/d/y1tTqndxVf7Uh)
