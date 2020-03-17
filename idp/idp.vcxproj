@@ -104,7 +104,8 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>copy "..\unicode debug\idp.dll" "..\tests\debug"</Command>
+      <Command>mkdir ..\tests\$(Configuration)\
+copy $(OutputPath)\idp.dll ..\tests\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -124,6 +125,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
+    <PostBuildEvent>
+      <Command>mkdir ..\tests\$(Configuration)\
+copy $(OutputPath)\idp.dll ..\tests\$(Configuration)\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug ANSI|Win32'">
     <ClCompile>
@@ -144,7 +149,8 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>copy "..\ansi debug\idp.dll" "..\tests\debug ansi"</Command>
+      <Command>mkdir ..\tests\$(Configuration)\
+copy $(OutputPath)\idp.dll ..\tests\$(Configuration)\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release ANSI|Win32'">
@@ -164,6 +170,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
+    <PostBuildEvent>
+      <Command>mkdir ..\tests\$(Configuration)\
+copy $(OutputPath)\idp.dll ..\tests\$(Configuration)\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="downloader.cpp" />
@@ -203,4 +213,10 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <Target
+    Name="PostBuildEvent"
+    Condition="'$(PostBuildEvent)'!=''"
+    DependsOnTargets="$(PostBuildEventDependsOn)">
+    <Exec WorkingDirectory="$(OutDir)" Command="$(PostBuildEvent)" ContinueOnError="true" />
+  </Target>
 </Project>
