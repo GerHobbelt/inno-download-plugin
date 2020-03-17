@@ -1,6 +1,6 @@
+#include "../../idp/idp.h"
 #include <stdio.h>
 #include <conio.h>
-#include "../../idp/idp.h"
 
 #ifdef __MINGW32__
     #define _gettch getch
@@ -21,7 +21,7 @@ int _tmain(int argc, _TCHAR* argv[])
     idpStartDownload();
 
     _tprintf(_T("Download started\n"));
-    _gettch();
+    (void)_gettch();
 
     return 0;
 }

@@ -1,8 +1,8 @@
+#include "../../idp/downloader.h"
 #include <stdio.h>
 #include <conio.h>
-#include "../../idp/downloader.h"
 
-void idpReportError() {} // stub to aviod compile error
+void idpReportError() {} // stub to avoid compile error
 
 int _tmain(int argc, _TCHAR* argv[])
 {

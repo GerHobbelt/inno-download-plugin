@@ -1,8 +1,8 @@
+#include "../../idp/downloader.h"
 #include <stdio.h>
 #include <conio.h>
-#include "../../idp/downloader.h"
 
-void idpReportError() {} // stub to aviod compile error
+void idpReportError() {} // stub to avoid compile error
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -14,7 +14,7 @@ int _tmain(int argc, _TCHAR* argv[])
     _tprintf(_T("Download %s\n"), result ? _T("OK") : _T("FAILED"));
     if(!result)
         _tprintf(_T("Error code: %u, error description: %s\n"), downloader.getLastError(), downloader.getLastErrorStr().c_str());
-    _gettch();
+    (void)_gettch();
     
     return 0;
 }

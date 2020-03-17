@@ -1,8 +1,8 @@
 #pragma once
 
+#include "downloader.h"
 #include <tchar.h>
 #include <windows.h>
-#include "downloader.h"
 
 extern "C"
 {
