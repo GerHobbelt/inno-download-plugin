@@ -4,6 +4,8 @@
 #include "netfile.h"
 #include "trace.h"
 
+#pragma comment(lib, "shlwapi.lib") // PathFileExists()
+
 NetFile::NetFile(tstring fileurl, tstring filename, DWORDLONG filesize, tstring comp): url(fileurl)
 {
     name            = filename;
@@ -105,7 +107,7 @@ tstring NetFile::generateUniqueName()
         fname = tstrprintf(_T("downloadedfile-%08x"), fno);
         fpath = addbackslash(destDir) + fname;
         fno++;
-    }while(PathFileExists(fpath.c_str()));
+    } while (PathFileExists(fpath.c_str()));
 
     return fname;
 }
