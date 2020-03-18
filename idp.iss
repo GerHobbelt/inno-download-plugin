@@ -1,5 +1,5 @@
 ; Inno Download Plugin
-; (c)2013-2016 Mitrich Software
+; (c)2013-2020 Mitrich Software
 ; http://mitrichsoftware.wordpress.com/
 ; https://bitbucket.org/mitrich_k/inno-download-plugin
 
@@ -73,17 +73,17 @@ procedure idpSetComponents(components: String);                  external 'idpSe
 procedure idpReportError;                                        external 'idpReportError@files:idp.dll cdecl';
 procedure idpTrace(text: String);                                external 'idpTrace@files:idp.dll cdecl';
 
-#if defined(UNICODE) && (Ver >= 0x05050300)
+// #if defined(UNICODE) && (Ver >= 0x05050300)
 procedure idpAddFileSize(url, filename: String; size: Int64);    external 'idpAddFileSize@files:idp.dll cdecl';
 procedure idpAddFileSizeComp(url, filename: String; size: Int64; components: String); external 'idpAddFileSize@files:idp.dll cdecl';
 function  idpGetFileSize(url: String; var size: Int64): Boolean; external 'idpGetFileSize@files:idp.dll cdecl';
 function  idpGetFilesSize(var size: Int64): Boolean;             external 'idpGetFilesSize@files:idp.dll cdecl';
-#else
-procedure idpAddFileSize(url, filename: String; size: Dword);    external 'idpAddFileSize32@files:idp.dll cdecl';
-procedure idpAddFileSizeComp(url, filename: String; size: Dword; components: String); external 'idpAddFileSize32@files:idp.dll cdecl';
-function  idpGetFileSize(url: String; var size: Dword): Boolean; external 'idpGetFileSize32@files:idp.dll cdecl';
-function  idpGetFilesSize(var size: Dword): Boolean;             external 'idpGetFilesSize32@files:idp.dll cdecl';
-#endif
+
+procedure idpAddFileSize32(url, filename: String; size: Dword);    external 'idpAddFileSize32@files:idp.dll cdecl';
+procedure idpAddFileSizeComp32(url, filename: String; size: Dword; components: String); external 'idpAddFileSize32@files:idp.dll cdecl';
+function  idpGetFileSize32(url: String; var size: Dword): Boolean; external 'idpGetFileSize32@files:idp.dll cdecl';
+function  idpGetFilesSize32(var size: Dword): Boolean;             external 'idpGetFilesSize32@files:idp.dll cdecl';
+// #endif
 
 type TIdpForm = record
         Page              : TWizardPage;
