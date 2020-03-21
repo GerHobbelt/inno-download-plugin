@@ -13,8 +13,8 @@ int _tmain(int argc, _TCHAR* argv[])
     idpAddFileComp(_T("http://127.0.0.1/test3.rar"), _T("test3.rar"), _T("comp3"));
 
     DWORDLONG size;
-    idpGetFilesSize(&size);
-    _tprintf(_T("Size of files: %d bytes\n"), (int)size);
+    bool sizeIsKnown = idpGetFilesSize(&size);
+    _tprintf(_T("Size of files: %d bytes%s\n"), (sizeIsKnown ? (int)size : -1), (sizeIsKnown ? _T("") : _T(" (one or more files' sizes are unknown!)")));
 
     idpSetInternalOption(_T("ErrorDialog"), _T("UrlList"));
     idpSetComponents(_T("comp1,comp2"));
