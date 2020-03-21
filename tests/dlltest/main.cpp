@@ -20,7 +20,7 @@ int _tmain(int argc, _TCHAR* argv[])
     idpSetComponents(_T("comp1,comp2"));
     idpStartDownload();
 
-    _tprintf(_T("Download started\n"));
+    _tprintf(_T("Download started. Hit key to exit test/demo.\n"));
     (void)_gettch();
 
     return 0;

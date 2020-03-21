@@ -46,5 +46,8 @@
     <ClCompile Include="..\..\idp\url.cpp">
       <Filter>Source Files\idp</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\idp\idp.cpp">
+      <Filter>Source Files\idp</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

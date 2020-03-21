@@ -454,6 +454,8 @@ void idpTrace(_TCHAR *text)
     TRACE(_T("%s"), text);
 }
 
+#if defined(IDP_EXPORTS)
+
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD dwReason, LPVOID lpvReserved)
 {
     if(dwReason == DLL_PROCESS_ATTACH)
@@ -461,3 +463,5 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD dwReason, LPVOID lpvReserved)
         
     return TRUE;
 }
+
+#endif
