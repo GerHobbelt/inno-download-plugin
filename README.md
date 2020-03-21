@@ -51,7 +51,9 @@ end;
 
 ### Download: ###
 
-Latest **original** version is 1.5.1 (17 Apr 2016) is available via [Google Drive](https://drive.google.com/folderview?id=0Bzw1xBVt0mokSXZrUEFIanV4azA&usp=sharing#list).
+**Latest releases** are available via the [GitHub Releases link above.](https://github.com/GerHobbelt/inno-download-plugin/releases)
+
+Last **original** version is 1.5.1 (17 Apr 2016) which is available via [Google Drive](https://drive.google.com/folderview?id=0Bzw1xBVt0mokSXZrUEFIanV4azA&usp=sharing#list).
 
 * [Download version 1.5.0 (Yandex Disk)](https://yadi.sk/d/B1GXlnwXdxggz)
 * [Download other releases (Yandex Disk)](https://yadi.sk/d/y1tTqndxVf7Uh)
@@ -66,5 +68,5 @@ Latest **original** version is 1.5.1 (17 Apr 2016) is available via [Google Driv
 
 To build IDP from source, you need:
 
-* Win32 C++ compiler (tested with VC++ 2005 & gcc 4.9.1)
+* Visual Studio 2019 (C/C++)
 * [Lua](http://lua.org) to build documentation
