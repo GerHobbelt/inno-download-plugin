@@ -8,10 +8,78 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "idp", "idp\idp.vcxproj", "{4EEEFF94-3C62-4658-921A-F77E68F630A0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dlltest", "tests\dlltest\dlltest.vcxproj", "{8100EAEB-D5E9-4CB5-80BD-6D3DF18BADDE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4EEEFF94-3C62-4658-921A-F77E68F630A0} = {4EEEFF94-3C62-4658-921A-F77E68F630A0}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "statictest", "tests\statictest\statictest.vcxproj", "{ADCDC02E-60F2-4CD4-A2B0-653E394990ED}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ftpdirtest", "tests\ftpdirtest\ftpdirtest.vcxproj", "{93BCED0C-6C58-4A77-8F4B-CC36D3008E4D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{7E849A02-EEEF-4AB2-9446-F33FE48707AC}"
+	ProjectSection(SolutionItems) = preProject
+		build.bat = build.bat
+		COPYING.txt = COPYING.txt
+		idp.iss = idp.iss
+		msbuildpath.bat = msbuildpath.bat
+		README.md = README.md
+		setup.iss = setup.iss
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unicode", "unicode", "{04E88CAC-9668-46C6-9F60-AD5D1D49B699}"
+	ProjectSection(SolutionItems) = preProject
+		unicode\idplang\belarusian.iss = unicode\idplang\belarusian.iss
+		unicode\idplang\bosnian.iss = unicode\idplang\bosnian.iss
+		unicode\idplang\brazilianPortuguese.iss = unicode\idplang\brazilianPortuguese.iss
+		unicode\idplang\bulgarian.iss = unicode\idplang\bulgarian.iss
+		unicode\idplang\ChineseSimplified.iss = unicode\idplang\ChineseSimplified.iss
+		unicode\idplang\czech.iss = unicode\idplang\czech.iss
+		unicode\idplang\default.iss = unicode\idplang\default.iss
+		unicode\idplang\finnish.iss = unicode\idplang\finnish.iss
+		unicode\idplang\french.iss = unicode\idplang\french.iss
+		unicode\idplang\german.iss = unicode\idplang\german.iss
+		unicode\idplang\hungarian.iss = unicode\idplang\hungarian.iss
+		unicode\idplang\italian.iss = unicode\idplang\italian.iss
+		unicode\idplang\polish.iss = unicode\idplang\polish.iss
+		unicode\idplang\russian.iss = unicode\idplang\russian.iss
+		unicode\idplang\serbian.iss = unicode\idplang\serbian.iss
+		unicode\idplang\slovak.iss = unicode\idplang\slovak.iss
+		unicode\idplang\slovenian.iss = unicode\idplang\slovenian.iss
+		unicode\idplang\spanish.iss = unicode\idplang\spanish.iss
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ansi", "ansi", "{1A1E1F48-02F4-4AA7-B399-40DC5EEA8D7A}"
+	ProjectSection(SolutionItems) = preProject
+		ansi\idplang\belarusian.iss = ansi\idplang\belarusian.iss
+		ansi\idplang\bosnian.iss = ansi\idplang\bosnian.iss
+		ansi\idplang\brazilianPortuguese.iss = ansi\idplang\brazilianPortuguese.iss
+		ansi\idplang\bulgarian.iss = ansi\idplang\bulgarian.iss
+		ansi\idplang\ChineseSimplified.iss = ansi\idplang\ChineseSimplified.iss
+		ansi\idplang\czech.iss = ansi\idplang\czech.iss
+		ansi\idplang\default.iss = ansi\idplang\default.iss
+		ansi\idplang\finnish.iss = ansi\idplang\finnish.iss
+		ansi\idplang\french.iss = ansi\idplang\french.iss
+		ansi\idplang\german.iss = ansi\idplang\german.iss
+		ansi\idplang\hungarian.iss = ansi\idplang\hungarian.iss
+		ansi\idplang\italian.iss = ansi\idplang\italian.iss
+		ansi\idplang\polish.iss = ansi\idplang\polish.iss
+		ansi\idplang\russian.iss = ansi\idplang\russian.iss
+		ansi\idplang\serbian.iss = ansi\idplang\serbian.iss
+		ansi\idplang\slovak.iss = ansi\idplang\slovak.iss
+		ansi\idplang\slovenian.iss = ansi\idplang\slovenian.iss
+		ansi\idplang\spanish.iss = ansi\idplang\spanish.iss
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{88620B7B-A0D7-4240-B2E8-B12B56C897EB}"
+	ProjectSection(SolutionItems) = preProject
+		examples\components1.iss = examples\components1.iss
+		examples\components2.iss = examples\components2.iss
+		examples\example1.iss = examples\example1.iss
+		examples\example2.iss = examples\example2.iss
+		examples\filelist.iss = examples\filelist.iss
+		examples\mirrors.iss = examples\mirrors.iss
+		examples\multilang.iss = examples\multilang.iss
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +129,9 @@ Global
 		{8100EAEB-D5E9-4CB5-80BD-6D3DF18BADDE} = {BCD69BA2-D7E3-4C52-B11F-4E6A7B225FA0}
 		{ADCDC02E-60F2-4CD4-A2B0-653E394990ED} = {BCD69BA2-D7E3-4C52-B11F-4E6A7B225FA0}
 		{93BCED0C-6C58-4A77-8F4B-CC36D3008E4D} = {BCD69BA2-D7E3-4C52-B11F-4E6A7B225FA0}
+		{04E88CAC-9668-46C6-9F60-AD5D1D49B699} = {7E849A02-EEEF-4AB2-9446-F33FE48707AC}
+		{1A1E1F48-02F4-4AA7-B399-40DC5EEA8D7A} = {7E849A02-EEEF-4AB2-9446-F33FE48707AC}
+		{88620B7B-A0D7-4240-B2E8-B12B56C897EB} = {7E849A02-EEEF-4AB2-9446-F33FE48707AC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B84F983A-5BB3-4AB1-B8DB-0DA531349CC4}
