@@ -61,8 +61,8 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,7,1,0
- PRODUCTVERSION 1,7,1,0
+ FILEVERSION 1,8,0,1
+ PRODUCTVERSION 1,8,0,1
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -80,12 +80,12 @@ BEGIN
             VALUE "Comments", "http://bitbucket.org/mitrich_k/inno-download-plugin, http://mitrichsoftware.wordpress.com"
             VALUE "CompanyName", "Mitrich Software"
             VALUE "FileDescription", "Inno Download Plugin"
-            VALUE "FileVersion", "1.7.1.0"
+            VALUE "FileVersion", "1.8.0.1"
             VALUE "InternalName", "idp"
             VALUE "LegalCopyright", "Copyright (C) 2013-2020 Mitrich Software"
             VALUE "OriginalFilename", "idp.dll"
             VALUE "ProductName", "Inno Download Plugin"
-            VALUE "ProductVersion", "1.7.1.0"
+            VALUE "ProductVersion", "1.8.0.1"
         END
     END
     BLOCK "VarFileInfo"
