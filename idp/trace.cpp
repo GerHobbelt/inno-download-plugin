@@ -13,7 +13,7 @@ void debugprintf(const _TCHAR *format, ...)
 
     va_list argptr;
     va_start(argptr, format);
-    _vstprintf(&str[5], 1024 - 5, format, argptr);
+    _vstprintf_s(&str[5], 1024 - 5, format, argptr);
     va_end(argptr);
 
     _tcscat_s(str, 1024, _T("\n"));

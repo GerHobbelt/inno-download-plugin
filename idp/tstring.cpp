@@ -62,7 +62,7 @@ tstring tstrprintf(tstring format, ...)
 
     va_list argptr;
     va_start(argptr, format);
-    _vstprintf(str, 256, format.c_str(), argptr);
+    _vstprintf_s(str, 256, format.c_str(), argptr);
     va_end(argptr);
 
     return str;
