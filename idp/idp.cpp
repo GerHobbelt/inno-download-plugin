@@ -292,20 +292,22 @@ bool idpGetFilesSize32(DWORD *size)
     return r;
 }
 
-DWORD timeoutVal(_TCHAR *value)
+DWORD timeoutVal(const _TCHAR *value)
 {
-    string val = toansi(tstrlower(STR(value)));
+    const _TCHAR* v = STR(value);
+    string val = toansi(tstrlower(v));
 
     if(val.compare("infinite") == 0) return TIMEOUT_INFINITE;
     if(val.compare("infinity") == 0) return TIMEOUT_INFINITE;
     if(val.compare("inf")      == 0) return TIMEOUT_INFINITE;
 
-    return _ttoi(value);
+    return _ttoi(v);
 }
 
-bool boolVal(_TCHAR *value)
+bool boolVal(const _TCHAR *value)
 {
-    string val = toansi(tstrlower(STR(value)));
+    const _TCHAR* v = STR(value);
+    string val = toansi(tstrlower(v));
 
     if(val.compare("true")  == 0) return true;
     if(val.compare("t")     == 0) return true;
@@ -316,19 +318,20 @@ bool boolVal(_TCHAR *value)
     if(val.compare("no")    == 0) return false;
     if(val.compare("n")     == 0) return false;
 
-    return _ttoi(value) > 0;
+    return _ttoi(v) > 0;
 }
 
-int dlgVal(_TCHAR *value)
+int dlgVal(const _TCHAR *value)
 {
-    string val = toansi(tstrlower(STR(value)));
+    const _TCHAR* v = STR(value);
+    string val = toansi(tstrlower(v));
 
     if(val.compare("none")     == 0) return DLG_NONE;
     if(val.compare("simple")   == 0) return DLG_SIMPLE;
     if(val.compare("filelist") == 0) return DLG_FILELIST;
     if(val.compare("urllist")  == 0) return DLG_URLLIST;
 
-    return boolVal(value) ? DLG_NONE : DLG_SIMPLE;
+    return boolVal(v) ? DLG_NONE : DLG_SIMPLE;
 }
 
 int invCertVal(_TCHAR *value)
@@ -359,12 +362,13 @@ DWORD proxyVal(_TCHAR *value)
 
 int bufSizeVal(_TCHAR *value)
 {
-    string val = toansi(tstrlower(STR(value)));
+    const _TCHAR* v = STR(value);
+    string val = toansi(tstrlower(v));
 
     if(val.compare("default") == 0) return DEFAULT_READ_BUFSIZE;
     if(val.compare("auto")    == 0) return DEFAULT_READ_BUFSIZE;
 
-    int bufSize = _ttoi(value);
+    int bufSize = _ttoi(v);
     return bufSize ? bufSize : DEFAULT_READ_BUFSIZE;
 }
 

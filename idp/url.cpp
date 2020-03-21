@@ -71,13 +71,13 @@ HINTERNET Url::connect(HINTERNET internet)
 
     if((_tcslen(userName) > 0) || (_tcslen(password) > 0))
     {
-        _tcscpy(user, userName);
-        _tcscpy(pass, password);
+        _tcscpy_s(user, 1024, userName);
+        _tcscpy_s(pass, 1024, password);
     }
     else
     {
-        _tcscpy(user, internetOptions.login.c_str());
-        _tcscpy(pass, internetOptions.password.c_str());
+        _tcscpy_s(user, 1024, internetOptions.login.c_str());
+        _tcscpy_s(pass, 1024, internetOptions.password.c_str());
     }
     TRACE(_T("    Username=\"%s\", Password=\"%s\""), user, pass);
 

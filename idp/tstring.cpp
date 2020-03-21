@@ -37,22 +37,22 @@ tstring tstrlower(const _TCHAR *s)
 {
     int bufsize = (int)_tcslen(s)+1;
     _TCHAR *buffer = new _TCHAR[bufsize];
-    _tcscpy(buffer, s);
-    _tcslwr(buffer);
+    _tcscpy_s(buffer, bufsize, s);
+    _tcslwr_s(buffer, bufsize);
     return buffer;
 }
 
 tstring itotstr(int d)
 {
     _TCHAR buf[34];
-    _itot(d, buf, 10);
+    _itot_s(d, buf, 34, 10);
     return buf;
 }
 
 string dwtostr(unsigned long d)
 {
     char buf[34];
-    _ultoa(d, buf, 10);
+    _ultoa_s(d, buf, 34, 10);
     return buf;
 }
 
@@ -62,7 +62,7 @@ tstring tstrprintf(tstring format, ...)
 
     va_list argptr;
     va_start(argptr, format);
-    _vstprintf(str, format.c_str(), argptr);
+    _vstprintf(str, 256, format.c_str(), argptr);
     va_end(argptr);
 
     return str;

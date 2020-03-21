@@ -3,6 +3,7 @@
 
 Timer::Timer()
 {
+    start(0);
 }
 
 Timer::Timer(DWORD msec)
@@ -48,8 +49,9 @@ tstring Timer::msecToStr(DWORD msec, tstring fmt)
     DWORD mins = (hoursMod - minsMod) / 60000;
     DWORD secs = (int)(minsMod / 1000);
 
-    _TCHAR *buf = new _TCHAR[fmt.length() + 30];
-    _stprintf(buf, fmt.c_str(), hours, mins, secs);
+    size_t bufsize = fmt.length() + 30;
+    _TCHAR *buf = new _TCHAR[bufsize];
+    _stprintf_s(buf, bufsize, fmt.c_str(), hours, mins, secs);
     tstring res = buf;
     delete[] buf;
 
