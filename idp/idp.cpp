@@ -8,47 +8,47 @@ Downloader      downloader;
 Ui              ui;
 InternetOptions internetOptions;
 
-void idpAddF(_TCHAR *url)
+void idpAddF(const _TCHAR *url)
 {
     downloader.addFile(STR(url));
 }
 
-void idpAddFile(_TCHAR *url, _TCHAR *filename)
+void idpAddFile(const _TCHAR *url, const _TCHAR *filename)
 {
     downloader.addFile(STR(url), STR(filename));
 }
 
-void idpAddFileSize(_TCHAR *url, _TCHAR *filename, DWORDLONG filesize)
+void idpAddFileSize(const _TCHAR *url, const _TCHAR *filename, DWORDLONG filesize)
 {
     downloader.addFile(STR(url), STR(filename), filesize);
 }
 
-void idpAddFileComp(_TCHAR *url, _TCHAR *filename, _TCHAR *components)
+void idpAddFileComp(const _TCHAR *url, const _TCHAR *filename, const _TCHAR *components)
 {
     downloader.addFile(STR(url), STR(filename), FILE_SIZE_UNKNOWN, STR(components));
 }
 
-void idpAddFileSizeComp(_TCHAR *url, _TCHAR *filename, DWORDLONG filesize, _TCHAR *components)
+void idpAddFileSizeComp(const _TCHAR *url, const _TCHAR *filename, DWORDLONG filesize, const _TCHAR *components)
 {
     downloader.addFile(STR(url), STR(filename), filesize, STR(components));
 }
 
-void idpAddMirror(_TCHAR *url, _TCHAR *mirror)
+void idpAddMirror(const _TCHAR *url, const _TCHAR *mirror)
 {
     downloader.addMirror(STR(url), STR(mirror));
 }
 
-void idpAddFtpDir(_TCHAR *url, _TCHAR *mask, _TCHAR *destdir, bool recursive)
+void idpAddFtpDir(const _TCHAR *url, const _TCHAR *mask, const _TCHAR *destdir, bool recursive)
 {
     downloader.addFtpDir(STR(url), STR(mask), STR(destdir), recursive);
 }
 
-void idpAddFtpDirComp(_TCHAR *url, _TCHAR *mask, _TCHAR *destdir, bool recursive, _TCHAR *components)
+void idpAddFtpDirComp(const _TCHAR *url, const _TCHAR *mask, const _TCHAR *destdir, bool recursive, const _TCHAR *components)
 {
     downloader.addFtpDir(STR(url), STR(mask), STR(destdir), recursive, components);
 }
 
-void idpSetDestDir(_TCHAR *dir, bool forAllFiles)
+void idpSetDestDir(const _TCHAR *dir, bool forAllFiles)
 {
     downloader.setDestDir(STR(dir), forAllFiles);
 }
@@ -78,7 +78,7 @@ bool idpFilesDownloaded()
     return downloader.filesDownloaded();
 }
 
-bool idpFileDownloaded(_TCHAR *url)
+bool idpFileDownloaded(const _TCHAR *url)
 {
     return downloader.fileDownloaded(STR(url));
 }
@@ -93,7 +93,7 @@ bool idpEnumFiles(_TCHAR *filename, int fileType)
     return downloader.enumerateFiles(filename, fileType);
 }
 
-bool idpGetFileSize(_TCHAR *url, DWORDLONG *size)
+bool idpGetFileSize(const _TCHAR *url, DWORDLONG *size)
 {
     Downloader d;
     d.setInternetOptions(internetOptions);
@@ -113,7 +113,7 @@ bool idpGetFilesSize(DWORDLONG *size)
     return *size != FILE_SIZE_UNKNOWN;
 }
 
-bool idpDownloadFile(_TCHAR *url, _TCHAR *filename)
+bool idpDownloadFile(const _TCHAR *url, const _TCHAR *filename)
 {
     Downloader d;
     d.setInternetOptions(internetOptions);
@@ -123,7 +123,7 @@ bool idpDownloadFile(_TCHAR *url, _TCHAR *filename)
     return d.downloadFiles();
 }
 
-bool idpDownloadFileDir(_TCHAR *url, _TCHAR *destdir, _TCHAR *outname)
+bool idpDownloadFileDir(const _TCHAR *url, const _TCHAR *destdir, _TCHAR *outname)
 {
     Downloader d;
     d.setInternetOptions(internetOptions);
@@ -199,19 +199,19 @@ bool idpDownloadFilesCompUi()
     return res;
 }
 
-void idpConnectControl(_TCHAR *name, HWND handle)
+void idpConnectControl(const _TCHAR *name, HWND handle)
 {
     if(name)
         ui.connectControl(name, handle);
 }
 
-void idpAddMessage(_TCHAR *name, _TCHAR *message)
+void idpAddMessage(const _TCHAR *name, const _TCHAR *message)
 {
     if(name)
         ui.addMessage(STR(name), STR(message));
 }
 
-void idpSetComponents(_TCHAR *components)
+void idpSetComponents(const _TCHAR *components)
 {
     downloader.setComponents(STR(components));
 }
@@ -266,17 +266,17 @@ void idpReportError()
 
 // ANSI Inno Setup don't support 64-bit integers.
 
-void idpAddFileSize32(_TCHAR *url, _TCHAR *filename, DWORD filesize)
+void idpAddFileSize32(const _TCHAR *url, const _TCHAR *filename, DWORD filesize)
 {
     idpAddFileSize(STR(url), STR(filename), filesize);
 }
 
-void idpAddFileSizeComp32(_TCHAR *url, _TCHAR *filename, DWORD filesize, _TCHAR *components)
+void idpAddFileSizeComp32(const _TCHAR *url, const _TCHAR *filename, DWORD filesize, const _TCHAR *components)
 {
     idpAddFileSizeComp(STR(url), STR(filename), filesize, STR(components));
 }
 
-bool idpGetFileSize32(_TCHAR *url, DWORD *size)
+bool idpGetFileSize32(const _TCHAR *url, DWORD *size)
 {
     DWORDLONG size64;
     bool r = idpGetFileSize(STR(url), &size64);
@@ -334,7 +334,7 @@ int dlgVal(const _TCHAR *value)
     return boolVal(v) ? DLG_NONE : DLG_SIMPLE;
 }
 
-int invCertVal(_TCHAR *value)
+int invCertVal(const _TCHAR *value)
 {
     string val = toansi(tstrlower(STR(value)));
 
@@ -346,7 +346,7 @@ int invCertVal(_TCHAR *value)
     return INVC_SHOWDLG;
 }
 
-DWORD proxyVal(_TCHAR *value)
+DWORD proxyVal(const _TCHAR *value)
 {
     string val = toansi(tstrlower(STR(value)));
 
@@ -360,7 +360,7 @@ DWORD proxyVal(_TCHAR *value)
     return INTERNET_OPEN_TYPE_PRECONFIG;
 }
 
-int bufSizeVal(_TCHAR *value)
+int bufSizeVal(const _TCHAR *value)
 {
     const _TCHAR* v = STR(value);
     string val = toansi(tstrlower(v));
@@ -372,7 +372,7 @@ int bufSizeVal(_TCHAR *value)
     return bufSize ? bufSize : DEFAULT_READ_BUFSIZE;
 }
 
-void idpSetInternalOption(_TCHAR *name, _TCHAR *value)
+void idpSetInternalOption(const _TCHAR *name, const _TCHAR *value)
 {
     if(!name)
         return;
@@ -416,7 +416,7 @@ void idpSetInternalOption(_TCHAR *name, _TCHAR *value)
     }
 }
 
-void idpSetProxyMode(_TCHAR *mode)
+void idpSetProxyMode(const _TCHAR *mode)
 {
     if(!mode)
         return;
@@ -424,7 +424,7 @@ void idpSetProxyMode(_TCHAR *mode)
     internetOptions.accessType = proxyVal(mode);
 }
 
-void idpSetProxyName(_TCHAR *name)
+void idpSetProxyName(const _TCHAR *name)
 {
     internetOptions.proxyName = STR(name);
 
@@ -432,13 +432,13 @@ void idpSetProxyName(_TCHAR *name)
         internetOptions.accessType = INTERNET_OPEN_TYPE_PROXY;
 }
 
-void idpSetProxyLogin(_TCHAR *login, _TCHAR *password)
+void idpSetProxyLogin(const _TCHAR *login, const _TCHAR *password)
 {
     internetOptions.proxyLogin    = STR(login);
     internetOptions.proxyPassword = STR(password);
 }
 
-void idpSetLogin(_TCHAR *login, _TCHAR *password)
+void idpSetLogin(const _TCHAR *login, const _TCHAR *password)
 {
     internetOptions.login    = STR(login);
     internetOptions.password = STR(password);
@@ -449,7 +449,7 @@ void idpSetDetailedMode(bool mode)
     ui.setDetailedMode(mode);
 }
 
-void idpTrace(_TCHAR *text)
+void idpTrace(const _TCHAR *text)
 {
     TRACE(_T("%s"), text);
 }

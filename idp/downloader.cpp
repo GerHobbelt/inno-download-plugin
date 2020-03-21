@@ -52,7 +52,7 @@ void Downloader::setOptions(Downloader *d)
     readBufferSize  = d->readBufferSize;
 }
 
-void Downloader::setComponents(tstring comp)
+void Downloader::setComponents(const tstring comp)
 {
     tstringtoset(components, comp, _T(','));
 }
@@ -62,7 +62,7 @@ void Downloader::setFinishedCallback(FinishedCallback callback)
     finishedCallback = callback;
 }
 
-void Downloader::setDestDir(tstring dir, bool forAllFiles)
+void Downloader::setDestDir(const tstring dir, bool forAllFiles)
 {
     destDir = dir;
 
@@ -79,7 +79,7 @@ tstring Downloader::getDestDir()
     return destDir;
 }
 
-void Downloader::addFile(tstring url, tstring filename, DWORDLONG size, tstring comp)
+void Downloader::addFile(const tstring url, const tstring filename, DWORDLONG size, const tstring comp)
 {
     if(!files.count(url))
     {
@@ -89,7 +89,7 @@ void Downloader::addFile(tstring url, tstring filename, DWORDLONG size, tstring 
     }
 }
 
-void Downloader::addMirror(tstring url, tstring mirror)
+void Downloader::addMirror(const tstring url, const tstring mirror)
 {
     mirrors.insert(pair<tstring, tstring>(url, mirror));
 }
@@ -180,9 +180,11 @@ bool Downloader::ftpDirsProcessed()
     return true;
 }
 
-bool Downloader::fileDownloaded(tstring url)
+bool Downloader::fileDownloaded(const tstring url)
 {
-    return files[url]->downloaded;
+    // fix https://groups.google.com/forum/#!topic/inno-download-plugin/QXoNjlJQ_OQ : idpFileDownloaded generates access violation
+    NetFile* file = files[url];
+    return file ? file->downloaded : false;
 }
 
 bool Downloader::startEnumFiles()
@@ -232,7 +234,7 @@ bool Downloader::openInternet()
         return true; //already opened
 
 #ifdef _DEBUG
-    _TCHAR *atype;
+    const _TCHAR *atype;
 
     switch(internetOptions.accessType)
     {
@@ -513,7 +515,7 @@ bool Downloader::downloadFiles(bool useComponents)
     return filesDownloaded();
 }
 
-bool Downloader::checkMirrors(tstring url, bool download/* or get size */)
+bool Downloader::checkMirrors(const tstring url, bool download/* or get size */)
 {
     TRACE(_T("Checking mirrors for %s (%s)..."), url.c_str(), download ? _T("download") : _T("get size"));
     pair<multimap<tstring, tstring>::iterator, multimap<tstring, tstring>::iterator> fileMirrors = mirrors.equal_range(url);
@@ -675,7 +677,7 @@ void Downloader::updateFileName(NetFile *file)
         ui->setFileName(file->getShortName());
 }
 
-void Downloader::updateFileName(tstring filename)
+void Downloader::updateFileName(const tstring filename)
 {
     if(ui)
         ui->setFileName(filename);
@@ -701,7 +703,7 @@ void Downloader::updateSizeTime(NetFile *file, Timer *timer)
         ui->setSizeTimeInfo(filesSize, downloadedFilesSize + file->bytesDownloaded, file->size, file->bytesDownloaded, timer->totalElapsed());
 }
 
-void Downloader::updateStatus(tstring status)
+void Downloader::updateStatus(const tstring status)
 {
     if(ui)
         ui->setStatus(status);
@@ -725,7 +727,7 @@ void Downloader::processMessages()
     }
 }
 
-tstring Downloader::msg(string key)
+tstring Downloader::msg(const string key)
 {
     tstring res;
 
@@ -748,7 +750,7 @@ void Downloader::storeError()
     errorStr  = formatwinerror(errorCode);
 }
 
-void Downloader::storeError(tstring msg, DWORD errcode)
+void Downloader::storeError(const tstring msg, DWORD errcode)
 {
     errorCode = errcode;
     errorStr  = msg;
@@ -764,12 +766,12 @@ tstring Downloader::getLastErrorStr()
     return errorStr;
 }
 
-void Downloader::addFtpDir(tstring url, tstring mask, tstring destdir, bool recursive, tstring comp)
+void Downloader::addFtpDir(const tstring url, const tstring mask, const tstring destdir, bool recursive, const tstring comp)
 {
     ftpDirs.push_back(new FtpDir(url, mask, destdir, recursive, comp));
 }
 
-bool Downloader::scanFtpDir(FtpDir *ftpDir, tstring destsubdir)
+bool Downloader::scanFtpDir(FtpDir *ftpDir, const tstring destsubdir)
 {
     Url url(ftpDir->url);
     url.internetOptions = internetOptions;
@@ -848,7 +850,7 @@ bool Downloader::scanFtpDir(FtpDir *ftpDir, tstring destsubdir)
     {
         for(list<tstring>::iterator i = dirs.begin(); i != dirs.end(); i++)
         {
-            tstring dir = *i;
+            const tstring dir = *i;
 
             tstring urlstr = addslash(ftpDir->url);
             urlstr += dir;

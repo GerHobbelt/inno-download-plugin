@@ -22,7 +22,7 @@
 class InternetOptions
 {
 public:
-    InternetOptions(tstring lgn = _T(""), tstring pass = _T(""), int invCert = INVC_SHOWDLG);
+    InternetOptions(const tstring lgn = _T(""), const tstring pass = _T(""), int invCert = INVC_SHOWDLG);
     ~InternetOptions();
 
     bool hasLoginInfo();

@@ -31,11 +31,11 @@ public:
     Downloader();
     ~Downloader();
 
-    void      addFile(tstring url, tstring filename = _T(""), DWORDLONG size = FILE_SIZE_UNKNOWN, tstring comp = _T(""));
-    void      addFtpDir(tstring url, tstring mask, tstring destdir, bool recursive, tstring comp = _T(""));
-    void      addMirror(tstring url, tstring mirror);
+    void      addFile(const tstring url, const tstring filename = _T(""), DWORDLONG size = FILE_SIZE_UNKNOWN, const tstring comp = _T(""));
+    void      addFtpDir(const tstring url, const tstring mask, const tstring destdir, bool recursive, const tstring comp = _T(""));
+    void      addMirror(const tstring url, const tstring mirror);
     void      setMirrorList(Downloader *d);
-    void      setDestDir(tstring dir, bool forAllFiles = false);
+    void      setDestDir(const tstring dir, bool forAllFiles = false);
     tstring   getDestDir();
     void      clearFiles();
     void      clearMirrors();
@@ -50,12 +50,12 @@ public:
     int       ftpDirsCount();
     bool      filesDownloaded();
     bool      ftpDirsProcessed();
-    bool      fileDownloaded(tstring url);
+    bool      fileDownloaded(const tstring url);
     bool      startEnumFiles();
     bool      enumerateFiles(_TCHAR *filename, int fileType);
     DWORD     getLastError();
     tstring   getLastErrorStr();
-    void      setComponents(tstring comp);
+    void      setComponents(const tstring comp);
     void      setUi(Ui *newUi);
     void      setInternetOptions(InternetOptions opt);
     void      setOptions(Downloader *d);
@@ -73,19 +73,19 @@ protected:
     bool openInternet();
     bool closeInternet();
     bool downloadFile(NetFile *netFile);
-    bool checkMirrors(tstring url, bool download/* or get size */);
+    bool checkMirrors(const tstring url, bool download/* or get size */);
     void updateProgress(NetFile *file);
     void updateFileName(NetFile *file);
-    void updateFileName(tstring filename);
+    void updateFileName(const tstring filename);
     void updateSpeed(NetFile *file, Timer *timer);
     void updateSizeTime(NetFile *file, Timer *timer);
-    void updateStatus(tstring status);
+    void updateStatus(const tstring status);
     void setMarquee(bool marquee, bool total = true);
     void storeError();
-    void storeError(tstring msg, DWORD errcode = 0);
-    bool scanFtpDir(FtpDir *ftpDir, tstring destsubdir = _T(""));
+    void storeError(const tstring msg, DWORD errcode = 0);
+    bool scanFtpDir(FtpDir *ftpDir, const tstring destsubdir = _T(""));
     void processFtpDirs();
-    tstring msg(string key);
+    tstring msg(const string key);
     
     map<tstring, NetFile *>    files;
     multimap<tstring, tstring> mirrors;

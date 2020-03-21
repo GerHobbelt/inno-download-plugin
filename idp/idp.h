@@ -6,18 +6,18 @@
 
 extern "C"
 {
-void idpAddF(_TCHAR *url);
-void idpAddFile(_TCHAR *url, _TCHAR *filename);
-void idpAddFileSize(_TCHAR *url, _TCHAR *filename, DWORDLONG size);
-void idpAddFileSize32(_TCHAR *url, _TCHAR *filename, DWORD size);
-void idpAddFileComp(_TCHAR *url, _TCHAR *filename, _TCHAR *components);
-void idpAddFileSizeComp(_TCHAR *url, _TCHAR *filename, DWORDLONG size, _TCHAR *components);
-void idpAddFileSizeComp32(_TCHAR *url, _TCHAR *filename, DWORD size, _TCHAR *components);
-void idpAddMirror(_TCHAR *url, _TCHAR *mirror);
-void idpAddFtpDir(_TCHAR *url, _TCHAR *mask, _TCHAR *destdir, bool recursive);
-void idpAddFtpDirComp(_TCHAR *url, _TCHAR *mask, _TCHAR *destdir, bool recursive, _TCHAR *components);
-void idpSetDestDir(_TCHAR *dir, bool forAllFiles);
-void idpGetDestDir(_TCHAR *destdir);
+void idpAddF(const _TCHAR *url);
+void idpAddFile(const _TCHAR *url, const _TCHAR *filename);
+void idpAddFileSize(const _TCHAR *url, const _TCHAR *filename, DWORDLONG size);
+void idpAddFileSize32(const _TCHAR *url, const _TCHAR *filename, DWORD size);
+void idpAddFileComp(const _TCHAR *url, const _TCHAR *filename, const _TCHAR *components);
+void idpAddFileSizeComp(const _TCHAR *url, const _TCHAR *filename, DWORDLONG size, const _TCHAR *components);
+void idpAddFileSizeComp32(const _TCHAR *url, const _TCHAR *filename, DWORD size, const _TCHAR *components);
+void idpAddMirror(const _TCHAR *url, const _TCHAR *mirror);
+void idpAddFtpDir(const _TCHAR *url, const _TCHAR *mask, const _TCHAR *destdir, bool recursive);
+void idpAddFtpDirComp(const _TCHAR *url, const _TCHAR *mask, const _TCHAR *destdir, bool recursive, const _TCHAR *components);
+void idpSetDestDir(const _TCHAR *dir, bool forAllFiles);
+void idpGetDestDir(const _TCHAR *destdir);
 void idpClearFiles();
 int  idpFilesCount();
 int  idpFtpDirsCount();
@@ -25,29 +25,29 @@ bool idpFilesDownloaded();
 bool idpFileDownloaded(_TCHAR *url);
 bool idpStartEnumFiles();
 bool idpEnumFiles(_TCHAR *filename, int fileType);
-bool idpGetFileSize(_TCHAR *url, DWORDLONG *size);
+bool idpGetFileSize(const _TCHAR *url, DWORDLONG *size);
 bool idpGetFilesSize(DWORDLONG *size);
-bool idpGetFileSize32(_TCHAR *url, DWORD *size);
+bool idpGetFileSize32(const _TCHAR *url, DWORD *size);
 bool idpGetFilesSize32(DWORD *size);
-bool idpDownloadFile(_TCHAR *url, _TCHAR *filename);
-bool idpDownloadFileDir(_TCHAR *url, _TCHAR *destdir, _TCHAR *outname);
+bool idpDownloadFile(const _TCHAR *url, const _TCHAR *filename);
+bool idpDownloadFileDir(const _TCHAR *url, const _TCHAR *destdir, _TCHAR *outname);
 bool idpDownloadFiles();
 bool idpDownloadFilesComp();
 bool idpDownloadFilesCompUi();
-void idpSetProxyMode(_TCHAR *mode);
-void idpSetProxyName(_TCHAR *name);
-void idpSetProxyLogin(_TCHAR *login, _TCHAR *password);
-void idpSetLogin(_TCHAR *login, _TCHAR *password);
+void idpSetProxyMode(const _TCHAR *mode);
+void idpSetProxyName(const _TCHAR *name);
+void idpSetProxyLogin(const _TCHAR *login, const _TCHAR *password);
+void idpSetLogin(const _TCHAR *login, const _TCHAR *password);
 
-void idpConnectControl(_TCHAR *name, HWND handle);
-void idpAddMessage(_TCHAR *name, _TCHAR *message);
-void idpSetInternalOption(_TCHAR *name, _TCHAR *value);
-void idpSetComponents(_TCHAR *components);
+void idpConnectControl(const _TCHAR *name, HWND handle);
+void idpAddMessage(const _TCHAR *name, const _TCHAR *message);
+void idpSetInternalOption(const _TCHAR *name, const _TCHAR *value);
+void idpSetComponents(const _TCHAR *components);
 void idpSetDetailedMode(bool mode);
 void idpStartDownload();
 void idpStopDownload();
 void idpReportError();
-void idpTrace(_TCHAR *text);
+void idpTrace(const _TCHAR *text);
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved);
 }
