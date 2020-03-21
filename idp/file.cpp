@@ -13,12 +13,19 @@ File::~File()
 
 bool File::open(tstring filename)
 {
-    return (handle = _tfopen(filename.c_str(), _T("wb"))) != NULL;
+    handle = NULL;
+    // TODO: handle _tfopen_s() returned errno?
+    _tfopen_s(&handle, filename.c_str(), _T("wb"));
+    return handle != NULL;
 }
 
 bool File::close()
 {
-    return handle ? (fclose(handle) == 0) : true;
+    bool rv = true;
+    if (handle)
+        rv = (fclose(handle) == 0);
+    handle = NULL;
+    return rv;
 }
 
 DWORD File::write(BYTE *buffer, DWORD size)
