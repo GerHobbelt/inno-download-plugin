@@ -39,49 +39,49 @@
 Source: "{#IDPDLLDIR}\idp.dll"; Flags: dontcopy;
 
 [Code]
-procedure idpAddF(url: String);                                  external 'idpAddF@files:idp.dll cdecl';
-procedure idpAddFile(url, filename: String);                     external 'idpAddFile@files:idp.dll cdecl';
-procedure idpAddFileComp(url, filename, components: String);     external 'idpAddFileComp@files:idp.dll cdecl';
-procedure idpAddMirror(url, mirror: String);                     external 'idpAddMirror@files:idp.dll cdecl';
-procedure idpAddFtpDir(url, mask, destdir: String; recursive: Boolean); external 'idpAddFtpDir@files:idp.dll cdecl';
-procedure idpAddFtpDirComp(url, mask, destdir: String; recursive: Boolean; components: String); external 'idpAddFtpDirComp@files:idp.dll cdecl';
-procedure idpSetDestDir(dir: String; forAllFiles: Boolean);      external 'idpSetDestDir@files:idp.dll cdecl';
-procedure idpGetDestDir(dir: String);                            external 'idpGetDestDir@files:idp.dll cdecl';
+procedure idpAddF(const url: String);                                  external 'idpAddF@files:idp.dll cdecl';
+procedure idpAddFile(const url, filename: String);                     external 'idpAddFile@files:idp.dll cdecl';
+procedure idpAddFileComp(const url, filename, components: String);     external 'idpAddFileComp@files:idp.dll cdecl';
+procedure idpAddMirror(const url, mirror: String);                     external 'idpAddMirror@files:idp.dll cdecl';
+procedure idpAddFtpDir(const url, mask, destdir: String; recursive: Boolean); external 'idpAddFtpDir@files:idp.dll cdecl';
+procedure idpAddFtpDirComp(const url, mask, destdir: String; recursive: Boolean; components: String); external 'idpAddFtpDirComp@files:idp.dll cdecl';
+procedure idpSetDestDir(const dir: String; forAllFiles: Boolean);  external 'idpSetDestDir@files:idp.dll cdecl';
+procedure idpGetDestDir(var dir: String, dirMaxSize: Integer);  external 'idpGetDestDir@files:idp.dll cdecl';
 procedure idpClearFiles;                                         external 'idpClearFiles@files:idp.dll cdecl';
 function  idpFilesCount: Integer;                                external 'idpFilesCount@files:idp.dll cdecl';
 function  idpFtpDirsCount: Integer;                              external 'idpFtpDirsCount@files:idp.dll cdecl';
-function  idpFileDownloaded(url: String): Boolean;               external 'idpFileDownloaded@files:idp.dll cdecl';
+function  idpFileDownloaded(const url: String): Boolean;               external 'idpFileDownloaded@files:idp.dll cdecl';
 function  idpFilesDownloaded: Boolean;                           external 'idpFilesDownloaded@files:idp.dll cdecl';
 function  idpStartEnumFiles: Boolean;                            external 'idpStartEnumFiles@files:idp.dll cdecl';
-function  idpEnumFiles(filename: String; fileType: Integer): Boolean; external 'idpEnumFiles@files:idp.dll cdecl';
-function  idpDownloadFile(url, filename: String): Boolean;       external 'idpDownloadFile@files:idp.dll cdecl';
-function  idpDownloadFileDir(url, destdir, outname: String): Boolean; external 'idpDownloadFileDir@files:idp.dll cdecl';
+function  idpEnumFiles(var filename: String; filenameMaxSize: Integer, fileType: Integer): Boolean; external 'idpEnumFiles@files:idp.dll cdecl';
+function  idpDownloadFile(const url, filename: String): Boolean;       external 'idpDownloadFile@files:idp.dll cdecl';
+function  idpDownloadFileDir(const url, destdir: String, var outname: String, outnameMaxSize: Integer): Boolean; external 'idpDownloadFileDir@files:idp.dll cdecl';
 function  idpDownloadFiles: Boolean;                             external 'idpDownloadFiles@files:idp.dll cdecl';
 function  idpDownloadFilesComp: Boolean;                         external 'idpDownloadFilesComp@files:idp.dll cdecl';
 function  idpDownloadFilesCompUi: Boolean;                       external 'idpDownloadFilesCompUi@files:idp.dll cdecl';
 procedure idpStartDownload;                                      external 'idpStartDownload@files:idp.dll cdecl';
 procedure idpStopDownload;                                       external 'idpStopDownload@files:idp.dll cdecl';
-procedure idpSetLogin(login, password: String);                  external 'idpSetLogin@files:idp.dll cdecl';
-procedure idpSetProxyMode(mode: String);                         external 'idpSetProxyMode@files:idp.dll cdecl';
-procedure idpSetProxyName(name: String);                         external 'idpSetProxyName@files:idp.dll cdecl';
-procedure idpSetProxyLogin(login, password: String);             external 'idpSetProxyLogin@files:idp.dll cdecl';
-procedure idpConnectControl(name: String; Handle: HWND);         external 'idpConnectControl@files:idp.dll cdecl';
-procedure idpAddMessage(name, message: String);                  external 'idpAddMessage@files:idp.dll cdecl';
-procedure idpSetInternalOption(name, value: String);             external 'idpSetInternalOption@files:idp.dll cdecl';
+procedure idpSetLogin(const login, password: String);                  external 'idpSetLogin@files:idp.dll cdecl';
+procedure idpSetProxyMode(const mode: String);                         external 'idpSetProxyMode@files:idp.dll cdecl';
+procedure idpSetProxyName(const name: String);                         external 'idpSetProxyName@files:idp.dll cdecl';
+procedure idpSetProxyLogin(const login, password: String);             external 'idpSetProxyLogin@files:idp.dll cdecl';
+procedure idpConnectControl(const name: String; Handle: HWND);         external 'idpConnectControl@files:idp.dll cdecl';
+procedure idpAddMessage(const name, message: String);                  external 'idpAddMessage@files:idp.dll cdecl';
+procedure idpSetInternalOption(const name, value: String);             external 'idpSetInternalOption@files:idp.dll cdecl';
 procedure idpSetDetailedMode(mode: Boolean);                     external 'idpSetDetailedMode@files:idp.dll cdecl';
-procedure idpSetComponents(components: String);                  external 'idpSetComponents@files:idp.dll cdecl';
+procedure idpSetComponents(const components: String);                  external 'idpSetComponents@files:idp.dll cdecl';
 procedure idpReportError;                                        external 'idpReportError@files:idp.dll cdecl';
-procedure idpTrace(text: String);                                external 'idpTrace@files:idp.dll cdecl';
+procedure idpTrace(const text: String);                                external 'idpTrace@files:idp.dll cdecl';
 
 // #if defined(UNICODE) && (Ver >= 0x05050300)
-procedure idpAddFileSize(url, filename: String; size: Int64);    external 'idpAddFileSize@files:idp.dll cdecl';
-procedure idpAddFileSizeComp(url, filename: String; size: Int64; components: String); external 'idpAddFileSize@files:idp.dll cdecl';
-function  idpGetFileSize(url: String; var size: Int64): Boolean; external 'idpGetFileSize@files:idp.dll cdecl';
+procedure idpAddFileSize(const url, filename: String; size: Int64);    external 'idpAddFileSize@files:idp.dll cdecl';
+procedure idpAddFileSizeComp(const url, filename: String; size: Int64; const components: String); external 'idpAddFileSize@files:idp.dll cdecl';
+function  idpGetFileSize(const url: String; var size: Int64): Boolean; external 'idpGetFileSize@files:idp.dll cdecl';
 function  idpGetFilesSize(var size: Int64): Boolean;             external 'idpGetFilesSize@files:idp.dll cdecl';
 
-procedure idpAddFileSize32(url, filename: String; size: Dword);    external 'idpAddFileSize32@files:idp.dll cdecl';
-procedure idpAddFileSizeComp32(url, filename: String; size: Dword; components: String); external 'idpAddFileSize32@files:idp.dll cdecl';
-function  idpGetFileSize32(url: String; var size: Dword): Boolean; external 'idpGetFileSize32@files:idp.dll cdecl';
+procedure idpAddFileSize32(const url, filename: String; size: Dword);    external 'idpAddFileSize32@files:idp.dll cdecl';
+procedure idpAddFileSizeComp32(const url, filename: String; size: Dword; const components: String); external 'idpAddFileSize32@files:idp.dll cdecl';
+function  idpGetFileSize32(const url: String; var size: Dword): Boolean; external 'idpGetFileSize32@files:idp.dll cdecl';
 function  idpGetFilesSize32(var size: Dword): Boolean;             external 'idpGetFilesSize32@files:idp.dll cdecl';
 // #endif
 
@@ -196,8 +196,10 @@ begin
     while true do
     begin
         SetLength(filename, 260);
-        r := idpEnumFiles(filename, fileType);
+        r := idpEnumFiles(filename, 260, fileType);
         if not r then break;
+        { correct the length as the API produces a C-style string, which is NUL-terminated, rather than a Pascal String. }
+        SetLength(filename, Pos(#0, filename) - 1);
         FileList.Append(filename);
     end;
 end;

@@ -52,7 +52,7 @@ public:
     bool      ftpDirsProcessed();
     bool      fileDownloaded(const tstring url);
     bool      startEnumFiles();
-    bool      enumerateFiles(_TCHAR *filename, int fileType);
+    bool      enumerateFiles(_TCHAR *filename, size_t filenameMaxSize, int fileType);
     DWORD     getLastError();
     tstring   getLastErrorStr();
     void      setComponents(const tstring comp);

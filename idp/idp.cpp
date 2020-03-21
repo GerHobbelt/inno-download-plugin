@@ -53,9 +53,9 @@ void idpSetDestDir(const _TCHAR *dir, bool forAllFiles)
     downloader.setDestDir(STR(dir), forAllFiles);
 }
 
-void idpGetDestDir(_TCHAR *destdir)
+void idpGetDestDir(_TCHAR *destdir, int destdirMaxSize)
 {
-    _tcscpy(destdir, downloader.getDestDir().c_str());
+    _tcscpy_s(destdir, destdirMaxSize, downloader.getDestDir().c_str());
 }
 
 void idpClearFiles()
@@ -88,9 +88,43 @@ bool idpStartEnumFiles()
     return downloader.startEnumFiles();
 }
 
-bool idpEnumFiles(_TCHAR *filename, int fileType)
+/*
+Example usage in Inno script:
+
+const
+  MAX_PATH = 260;
+
+function GetOneEnumeratedFile(): string;
+begin
+  SetLength(Result, MAX_PATH);
+  idpEnumFiles(Result, MAX_PATH, FindData, IDP_DOWNLOADED);
+  SetLength(Result, Pos(#0, Result) - 1);
+end;
+
+As gleaned from https://code.i-harness.com/en/q/20a2b72#answers:
+
+You must:
+
+- Ensure that both sides are using the same string types, either both ANSI or both Unicode.
+  - ANSI Inno Setup supports only ANSI strings with its String type.
+  - Unicode Inno Setup supports either ANSI strings with AnsiString or Unicode strings with String.
+- When using Unicode strings, ensure that both sides agree whether Max and/or the return value 
+  is specified in characters or bytes (the example code assumes it's in characters).
+- Prior to calling the function, use either SetLength or StringOfChar to ensure that the buffer 
+  has been sized to the required maximum possible result length.
+- Ensure the called function does not try to write past this maximum length (which is easier 
+  if this is provided as a parameter to the function).
+- Ensure that if you're using Pos, the called function must ensure the value is null-terminated 
+  (or you need to be more careful than shown in the example).
+- Ensure that after the call you truncate the string to the actual length by finding the null terminator.
+
+One of the constraints in play here is that memory allocated by one side must be freed by the same side. 
+You cannot safely release memory allocated on the "wrong" side of the DLL boundary, in either direction.
+
+*/
+bool idpEnumFiles(_TCHAR *dstFilename, int dstFilenameMaxSize, int fileType)
 {
-    return downloader.enumerateFiles(filename, fileType);
+    return downloader.enumerateFiles(dstFilename, dstFilenameMaxSize, fileType);
 }
 
 bool idpGetFileSize(const _TCHAR *url, DWORDLONG *size)
@@ -123,7 +157,7 @@ bool idpDownloadFile(const _TCHAR *url, const _TCHAR *filename)
     return d.downloadFiles();
 }
 
-bool idpDownloadFileDir(const _TCHAR *url, const _TCHAR *destdir, _TCHAR *outname)
+bool idpDownloadFileDir(const _TCHAR *url, const _TCHAR *destdir, _TCHAR *outname, int outnameMaxSize)
 {
     Downloader d;
     d.setInternetOptions(internetOptions);
@@ -134,7 +168,7 @@ bool idpDownloadFileDir(const _TCHAR *url, const _TCHAR *destdir, _TCHAR *outnam
     bool res = d.downloadFiles();
 
     d.startEnumFiles();
-    d.enumerateFiles(outname, IDP_DOWNLOADED);
+    d.enumerateFiles(outname, outnameMaxSize, IDP_DOWNLOADED);
 
     return res;
 }

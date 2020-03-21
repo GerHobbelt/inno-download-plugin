@@ -193,7 +193,7 @@ bool Downloader::startEnumFiles()
     return enumIter != files.end();
 }
 
-bool Downloader::enumerateFiles(_TCHAR *filename, int fileType)
+bool Downloader::enumerateFiles(_TCHAR *filename, size_t filenameMaxSize, int fileType)
 {
     if(enumIter == files.end())
         return false;
@@ -222,7 +222,7 @@ bool Downloader::enumerateFiles(_TCHAR *filename, int fileType)
                 file = enumIter->second;
             }
 
-        _tcscpy(filename, file->name.c_str());
+        _tcscpy_s(filename, filenameMaxSize, file->name.c_str());
         enumIter++;
         return true;
     }
